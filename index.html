@@ -92,7 +92,7 @@
           <h1 class="text-xl font-black bg-gradient-to-r from-amber-300 via-yellow-100 to-amber-400 bg-clip-text text-transparent">
             TYPE3D MASTER
           </h1>
-          <p class="text-xs text-slate-400 font-medium">1000 Unique Levels • Dynamic Timers & Cash</p>
+          <p class="text-xs text-slate-400 font-medium">1000 Unique Levels • Earn Coins & Real Cash</p>
         </div>
       </div>
 
@@ -157,14 +157,15 @@
                 </div>
                 <h3 class="text-2xl md:text-3xl font-black text-white mt-1">Win Cash Prizes Every 15 & 100 Levels!</h3>
                 <p class="text-xs md:text-sm text-slate-300 mt-1">
+                  • <strong>Normal Levels:</strong> Earn +50 Gold Coins per Level!<br>
                   • <strong>Every 15th Level:</strong> 1.5 Min = <strong>₹250 Cash</strong> | 2.0 Min = <strong>₹200 Cash</strong><br>
-                  • <strong>Every 100th Level:</strong> 100 Words with Custom Timer = <strong>₹500 Cash</strong>
+                  • <strong>Every 100th Level:</strong> 1.5 Min = <strong>₹500</strong> | 2.0 Min = <strong>₹400</strong> | 2.5 Min = <strong>₹350 Cash</strong>
                 </p>
               </div>
             </div>
 
             <button id="btn-play-cash-test" class="w-full md:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 hover:from-amber-300 hover:to-yellow-300 text-slate-950 font-black text-sm shadow-2xl transition transform hover:-translate-y-1 uppercase tracking-wider shrink-0 flex items-center justify-center gap-2">
-              <span>🎯</span> PLAY FOR CASH
+              <span>🎯</span> PLAY FOR CASH & COINS
             </button>
           </div>
         </div>
@@ -250,7 +251,7 @@
           <div class="glass-card p-4 rounded-2xl flex items-center gap-4 border border-slate-800">
             <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-2xl">🪙</div>
             <div>
-              <p class="text-xs text-slate-400 font-medium">Gold Balance</p>
+              <p class="text-xs text-slate-400 font-medium">Gold Coins</p>
               <h4 id="dash-coins" class="text-2xl font-black text-amber-400">0</h4>
             </div>
           </div>
@@ -384,6 +385,7 @@
       <div id="timer-options-box" class="space-y-3">
         <button id="btn-timer-opt1" class="w-full py-3.5 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm shadow transition">⏱️ 1.5 Minutes (90s) = ₹250 Cash</button>
         <button id="btn-timer-opt2" class="w-full py-3.5 px-4 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-sm shadow transition">⏱️ 2.0 Minutes (120s) = ₹200 Cash</button>
+        <button id="btn-timer-opt3" class="hidden w-full py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm shadow transition">⏱️ 2.5 Minutes (150s) = ₹350 Cash</button>
       </div>
     </div>
   </div>
@@ -438,28 +440,28 @@
     </div>
   </div>
 
-  <!-- VICTORY MODAL -->
+  <!-- VICTORY MODAL WITH COINS & CASH REWARD -->
   <div id="modal-victory" class="hidden fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4">
     <div class="glass-panel w-full max-w-md rounded-3xl p-6 md:p-8 border border-emerald-500/30 text-center space-y-6 shadow-2xl">
       <div class="w-20 h-20 rounded-3xl bg-gradient-to-tr from-amber-500 to-yellow-300 flex items-center justify-center text-4xl mx-auto shadow-xl">🏆</div>
       <div>
         <span class="px-3 py-1 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 uppercase tracking-widest">Level Complete!</span>
-        <h3 class="text-3xl font-black text-white mt-2">Party Time! 🎉</h3>
+        <h3 class="text-3xl font-black text-white mt-2">Awesome Job! 🎉</h3>
         <p id="victory-subtitle" class="text-xs text-slate-300 mt-1">Outstanding accuracy and typing speed!</p>
       </div>
 
       <div class="grid grid-cols-3 gap-3 bg-slate-900/90 p-4 rounded-2xl border border-slate-800">
         <div>
-          <p class="text-[10px] text-slate-400 font-semibold">REWARD</p>
-          <p id="vic-reward-cash" class="text-lg font-black text-emerald-400">+₹0</p>
+          <p class="text-[10px] text-slate-400 font-semibold">COINS REWARD</p>
+          <p id="vic-reward-coins" class="text-lg font-black text-amber-400">+50 🪙</p>
         </div>
         <div class="border-x border-slate-800">
-          <p class="text-[10px] text-slate-400 font-semibold">SPEED</p>
-          <p id="vic-reward-wpm" class="text-lg font-black text-indigo-400">42 WPM</p>
+          <p class="text-[10px] text-slate-400 font-semibold">CASH EARNED</p>
+          <p id="vic-reward-cash" class="text-lg font-black text-emerald-400">+₹0</p>
         </div>
         <div>
-          <p class="text-[10px] text-slate-400 font-semibold">STREAK</p>
-          <p id="vic-reward-streak" class="text-lg font-black text-orange-400">3 🔥</p>
+          <p class="text-[10px] text-slate-400 font-semibold">SPEED</p>
+          <p id="vic-reward-wpm" class="text-lg font-black text-indigo-400">42 WPM</p>
         </div>
       </div>
 
@@ -492,8 +494,8 @@
 
   <!-- JAVASCRIPT ENGINE -->
   <script>
-    const STORAGE_KEY = 'type3d_master_save_v16000';
-    const LEADERBOARD_KEY = 'type3d_global_leaderboard_v8';
+    const STORAGE_KEY = 'type3d_master_save_v18000';
+    const LEADERBOARD_KEY = 'type3d_global_leaderboard_v10';
 
     const defaultPlayers = [
       { name: "ApexTyper", avatar: "🚀", level: 120, coins: 5400, solved: 120 },
@@ -590,7 +592,7 @@
               <h4 class="text-sm font-bold text-white flex items-center gap-2">
                 ${player.name} ${isCurrentPlayer ? '<span class="text-[10px] bg-indigo-500 text-white px-2 py-0.5 rounded-full font-bold">You</span>' : ''}
               </h4>
-              <p class="text-[11px] text-slate-400">Solved: ${player.solved} sentences</p>
+              <p class="text-[11px] text-slate-400">Coins: ${player.coins} 🪙</p>
             </div>
           </div>
           <div class="text-right">
@@ -601,7 +603,6 @@
       });
     }
 
-    /* 100% UNIQUE DYNAMIC SENTENCE ENGINE (NO REPEATS) */
     function generate1000Sentences() {
       const list = [];
       const subjects = ["Developers", "Engineers", "Designers", "Coders", "Students", "Leaders", "Innovators", "Creators", "Architects", "Scientists"];
@@ -706,6 +707,8 @@
     }
 
     function launchLevelSetup(lvlNumber) {
+      Object.values(modals).forEach(m => m.classList.add('hidden'));
+
       gameState.currentLevel = lvlNumber;
       saveGameData();
 
@@ -718,7 +721,7 @@
       const headerTag = document.getElementById('cash-test-header-tag');
       if (is100Lvl || is15Lvl) {
         headerTag.classList.remove('hidden');
-        headerTag.textContent = is100Lvl ? "🔥 LEVEL 100: 100-WORD CASH CHALLENGE (₹500) 🔥" : `⚡ LEVEL ${gameState.currentLevel}: CASH CHALLENGE (₹${selectedChallengeReward}) ⚡`;
+        headerTag.textContent = is100Lvl ? `🔥 LEVEL ${gameState.currentLevel}: 100-WORD CASH CHALLENGE (₹${selectedChallengeReward}) 🔥` : `⚡ LEVEL ${gameState.currentLevel}: CASH CHALLENGE (₹${selectedChallengeReward}) ⚡`;
       } else {
         headerTag.classList.add('hidden');
       }
@@ -752,17 +755,21 @@
         const desc = document.getElementById('timer-modal-desc');
         const opt1 = document.getElementById('btn-timer-opt1');
         const opt2 = document.getElementById('btn-timer-opt2');
+        const opt3 = document.getElementById('btn-timer-opt3');
 
         if (lvlNumber % 100 === 0) {
           title.textContent = "Level 100 Grand Cash Challenge!";
-          desc.textContent = "Complete 100-word paragraph in selected time for ₹500 Cash!";
+          desc.textContent = "Complete 100-word paragraph in selected time for Cash Rewards!";
           opt1.textContent = "⏱️ 1.5 Minutes (90s) = ₹500 Cash";
           opt2.textContent = "⏱️ 2.0 Minutes (120s) = ₹400 Cash";
+          opt3.textContent = "⏱️ 2.5 Minutes (150s) = ₹350 Cash";
+          opt3.classList.remove('hidden');
         } else {
           title.textContent = `Level ${lvlNumber} Speed Cash Challenge!`;
           desc.textContent = "Complete 50-word paragraph in selected time for Cash Rewards!";
           opt1.textContent = "⏱️ 1.5 Minutes (90s) = ₹250 Cash";
           opt2.textContent = "⏱️ 2.0 Minutes (120s) = ₹200 Cash";
+          opt3.classList.add('hidden');
         }
         modals.timerSelect.classList.remove('hidden');
       } else {
@@ -773,14 +780,18 @@
     document.getElementById('btn-timer-opt1').addEventListener('click', () => {
       selectedChallengeTimer = 90;
       selectedChallengeReward = gameState.currentLevel % 100 === 0 ? 500 : 250;
-      modals.timerSelect.classList.add('hidden');
       launchLevelSetup(gameState.currentLevel);
     });
 
     document.getElementById('btn-timer-opt2').addEventListener('click', () => {
       selectedChallengeTimer = 120;
       selectedChallengeReward = gameState.currentLevel % 100 === 0 ? 400 : 200;
-      modals.timerSelect.classList.add('hidden');
+      launchLevelSetup(gameState.currentLevel);
+    });
+
+    document.getElementById('btn-timer-opt3').addEventListener('click', () => {
+      selectedChallengeTimer = 150;
+      selectedChallengeReward = 350;
       launchLevelSetup(gameState.currentLevel);
     });
 
@@ -848,12 +859,14 @@
       clearInterval(timerInterval);
 
       let cashAward = 0;
+      let coinAward = 50 + Math.max(0, timeRemaining * 2);
+
       if (gameState.currentLevel % 15 === 0 || gameState.currentLevel % 100 === 0) {
         cashAward = selectedChallengeReward;
       }
 
       gameState.cashBalance += cashAward;
-      gameState.coins += 40 + Math.max(0, timeRemaining * 2);
+      gameState.coins += coinAward;
       gameState.streak += 1;
       if (gameState.streak > gameState.bestStreak) gameState.bestStreak = gameState.streak;
       gameState.solvedCount += 1;
@@ -862,9 +875,9 @@
       saveGameData();
       confetti({ particleCount: 150, spread: 90, origin: { y: 0.5 } });
 
+      document.getElementById('vic-reward-coins').textContent = `+${coinAward} 🪙`;
       document.getElementById('vic-reward-cash').textContent = `+₹${cashAward}`;
       document.getElementById('vic-reward-wpm').textContent = `${Math.round((activeSentenceText.split(' ').length / Math.max(1, (Date.now() - levelStartTime)/1000)) * 60)} WPM`;
-      document.getElementById('vic-reward-streak').textContent = `${gameState.streak} 🔥`;
 
       modals.victory.classList.remove('hidden');
     }
@@ -960,6 +973,13 @@
     document.getElementById('btn-save-name').addEventListener('click', () => {
       const nameVal = document.getElementById('prompt-name-input').value.trim();
       if (nameVal) { gameState.name = nameVal; saveGameData(); modals.namePrompt.classList.add('hidden'); }
+    });
+
+    document.getElementById('btn-reset-data').addEventListener('click', () => {
+      if (confirm("Reset all game data?")) {
+        localStorage.removeItem(STORAGE_KEY);
+        location.reload();
+      }
     });
 
     function renderShopModal() {
