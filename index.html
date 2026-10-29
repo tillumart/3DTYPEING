@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Type3D Master - Full Cash Wallet & Speed Challenges</title>
+  <title>Type3D Master - Fixed Level 15 Bug & Full Cash Wallet</title>
   
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -494,8 +494,8 @@
 
   <!-- JAVASCRIPT ENGINE -->
   <script>
-    const STORAGE_KEY = 'type3d_master_save_v18000';
-    const LEADERBOARD_KEY = 'type3d_global_leaderboard_v10';
+    const STORAGE_KEY = 'type3d_master_save_v19000';
+    const LEADERBOARD_KEY = 'type3d_global_leaderboard_v11';
 
     const defaultPlayers = [
       { name: "ApexTyper", avatar: "🚀", level: 120, coins: 5400, solved: 120 },
@@ -750,6 +750,7 @@
     }
 
     function startLevel(lvlNumber) {
+      gameState.currentLevel = lvlNumber;
       if (lvlNumber % 15 === 0 || lvlNumber % 100 === 0) {
         const title = document.getElementById('timer-modal-title');
         const desc = document.getElementById('timer-modal-desc');
